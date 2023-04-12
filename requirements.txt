@@ -1,3 +1,5 @@
 python-dotenv
 gpiozero
 requests
+libhoney
+requests
