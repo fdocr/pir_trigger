@@ -39,7 +39,7 @@ while True:
         print("Trigger request response ", res.status_code)
     else:
         print("Motion detected (inside timeout)")
-        send_telemetry
+        send_telemetry()
     motion_time = time.time()
     pir.wait_for_no_motion()
 
