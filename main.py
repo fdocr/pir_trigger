@@ -6,8 +6,8 @@ import libhoney
 from dotenv import load_dotenv
 load_dotenv()
 
-trigger_url = os.environ.get("TRIGGER_URL")
-honeycomb_api_key = os.environ.get("HONEYCOMB_API_KEY")
+trigger_url = os.getenv("TRIGGER_URL")
+honeycomb_api_key = os.getenv("HONEYCOMB_API_KEY")
 libhoney.init(writekey=honeycomb_api_key, dataset="pir-trigger", debug=True, block_on_send=True)
 
 # Write pid to file so we can kill it if needed
@@ -27,7 +27,7 @@ def send_telemetry(timeout = True, webhook_satus_code = 0):
 import requests
 from gpiozero import MotionSensor
 pir = MotionSensor(4)
-timeout = 45
+timeout = int(os.getenv("TIMEOUT"))
 motion_time = time.time() - timeout
 
 while True:
